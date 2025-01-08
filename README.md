@@ -1,5 +1,5 @@
 # Project from Will Sentance
-This is a little project from Will Sentance's course on FrontendMasters in order to understand node in depth.
+This is a little project from Will Sentance's course on FrontendMasters. Goal of this project is to understand node and what happens in the background of node.
 
 # Node Pages
 
