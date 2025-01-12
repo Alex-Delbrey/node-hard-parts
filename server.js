@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+const { getEventListeners } = require('events');
 
 function doOnRequest(request, response) {
 
@@ -10,8 +11,8 @@ function doOnRequest(request, response) {
     response.end(fileInfo);
   }
   else if (request.method === 'POST' && request.url === '/sayHi') {
-    // code here...
-
+    fs.appendFileSync("hi_log.txt", "Somebody said hi.\n");
+    response.end("hi back to you!");
   }
   else if (request.method === 'POST' && request.url === '/greeting') {
     // accumulate the request body in a series of chunks
