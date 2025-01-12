@@ -15,9 +15,16 @@ function doOnRequest(request, response) {
     response.end("hi back to you!");
   }
   else if (request.method === 'POST' && request.url === '/greeting') {
-    // accumulate the request body in a series of chunks
-    // code here...
-
+    let body = [];
+    request
+      .on("data", chunk => {
+        body.push(chunk);
+      })
+      .on("end", () => {
+        body = Buffer.concat(body).toString() + "\n";
+        fs.appendFileSync("hi_log.txt", body);
+        response.end(body);
+      });
   }
   else {
     // Handle 404 error: page not found
